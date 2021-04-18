@@ -41,7 +41,7 @@ class CalculatorServiceTest {
     BigDecimal rounded2 =
         CalculatorService.round(
             BigDecimal.valueOf(123.123), BigDecimal.valueOf(0.05), RoundingMode.UP);
-    assertEquals(0, BigDecimal.valueOf(123.13).compareTo(rounded2));
+    assertEquals(0, BigDecimal.valueOf(123.15).compareTo(rounded2));
   }
 
   @Test
