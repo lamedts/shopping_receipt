@@ -38,20 +38,19 @@ public class CalculatorService {
                           .multiply(
                               BigDecimal.valueOf(product.getQuantity())
                                   .multiply(state.getTaxRate()));
-                  return round(saleTax, BigDecimal.valueOf(0.05), RoundingMode.UP);
+                  return roundUp(saleTax, BigDecimal.valueOf(0.05));
                 })
             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
     return summary.setSubtotal(subtotal).setTax(tax).setTotal(tax.add(subtotal));
   }
 
-  public static BigDecimal round(
-      BigDecimal value, BigDecimal increment, RoundingMode roundingMode) {
+  public static BigDecimal roundUp(BigDecimal value, BigDecimal increment) {
     if (increment.signum() == 0) {
-      // 0 increment does not make much sense, but prevent division by 0
+      // prevent division by 0
       return value;
     } else {
-      BigDecimal divided = value.divide(increment, 0, roundingMode);
+      BigDecimal divided = value.divide(increment, 0, RoundingMode.UP);
       return divided.multiply(increment);
     }
   }

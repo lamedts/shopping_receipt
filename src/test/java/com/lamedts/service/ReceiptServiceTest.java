@@ -1,19 +1,17 @@
 package com.lamedts.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.lamedts.Model.Cart;
 import com.lamedts.Model.Summary;
 import java.math.BigDecimal;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class ReceiptServiceTest {
+public class ReceiptServiceTest {
 
   ReceiptService receiptService = new ReceiptService();
 
   @Test
-  void printReceipt() {
+  public void printReceipt() {
     Cart cart =
         new Cart()
             .setProductList(
