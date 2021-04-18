@@ -19,7 +19,8 @@ public class StateService {
   public State getStateInformation(String stateCode) throws Exception {
     String stateJsonFileName = "state.json";
     Map<String, State> stateList =
-        objectMapper.readValue(Util.readResourceFile(stateJsonFileName), new TypeReference<>() {});
+        objectMapper.readValue(Util.readResourceFile(stateJsonFileName), new TypeReference<>() {
+        });
     return stateList.get(stateCode);
   }
 }
